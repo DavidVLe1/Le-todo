@@ -18,15 +18,19 @@ export class NamesComponent implements OnInit {
   ngOnInit(): void {
     this.namesService.getAll().subscribe(returnNames => {
       this.names = returnNames.docs;
-
     })
   }
 
   saveName(): void {
-    this.namesService.create(this.newName).subscribe( saveName =>{
+    this.namesService.create(this.newName).subscribe( saveName => {
       this.names.push(saveName);
     })
   }
 
+  deleteName():void{
+    this.namesService.deleteNameId().subscribe(name=>{
+      this.names.splice(name.id,1);
+    })
+  }
 
 }
