@@ -1,7 +1,7 @@
 {
   "name": "david_le-week11",
   "version": "0.0.1",
-  "description": "Migrating to express",
+  "description": "week11 assignment",
   "main": "server.js",
   "dependencies": {
     "bootstrap": "^4.5.2",
