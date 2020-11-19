@@ -5,6 +5,44 @@
 <h3>Here are your Names!</h3>
 <ul>
   <div *ngFor="let person of names">
-    <li> {{ person.name }} <button (click)="deleteName()" type='button' class = 'btn btn-danger btn-sm delete'>x</button></li>
+    <div class="row">
+    <li> {{ person.name }} <button (click)="deleteName(person)" type='button' class = 'btn btn-danger btn-sm delete'>Delete</button>
+      <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="editName">Make your changes.</label>
+              <div class="input-group">
+                <input id="editName" type="text" name="newName" class="form-control" placeholder="{{person.name}}" [(ngModel)]="newName" (input)="newEditName(person.name, newName)">
+
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="saveEditedName()">Save</button>
+          <button type="button" class="btn btn-outline-danger" (click)="modal.close('Close button')">Close</button>
+        </div>
+      </ng-template>
+
+      <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Edit Name</button>
+
+      <hr>
+
+      <pre>{{ closeResult }}</pre>
+    </li>
+    </div>
   </div>
 </ul>
+
+
+
+
+
+
