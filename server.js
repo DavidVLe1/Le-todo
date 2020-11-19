@@ -13,12 +13,7 @@ mongoose.connection.once('open', function() {
     app.use(express.json());
     app.use( express.static('front-end/dist/front-end/'));
 
-    app.delete("/names",function (request, response){
-        Names.deleteOne({_id: request.query.id}).exec(function (err){
-            response.status(200);
-            response.send(JSON.stringify({}));
-        });
-    });
+
 
     app.get('/names', function (request, response) {
         var query = Names.find();
@@ -28,21 +23,29 @@ mongoose.connection.once('open', function() {
         });
     })
 
-    app.post('/name',function (request, response) {
+    app.post('/name', function (request, response) {
         var newName = new Names({
             name: request.body.name
         });
-        newName.save(function (err,doc){
-            console.log(doc)
+        console.log(newName)
+        newName.save(function (err, doc) {
             response.status(200);
             response.send(JSON.stringify(doc));
         })
-
-    });
+    })
 
 
     app.listen(8080, function(){
         console.log('Application is running!');
+    })
+
+    app.delete('/name/*', function (req, res){
+        query = Names.deleteOne({'_id': req.params[0]});
+        query.exec(function (err) {
+                res.status(200);
+                res.send(JSON.stringify({}));
+            }
+        );
     })
 });
 
