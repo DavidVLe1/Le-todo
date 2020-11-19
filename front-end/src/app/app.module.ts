@@ -7,6 +7,7 @@ import { NamesComponent } from './names/names.component';
 import { FormsModule} from "@angular/forms";
 import { HttpClientModule} from "@angular/common/http";
 import {TodoListComponentComponent} from "./todo-list-component/todo-list-component.component";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {TodoListComponentComponent} from "./todo-list-component/todo-list-compon
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-        HttpClientModule
+        HttpClientModule,
+        NgbModule
     ],
   providers: [],
   bootstrap: [AppComponent]
