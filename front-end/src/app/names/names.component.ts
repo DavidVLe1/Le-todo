@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NamesService} from "../_services/names.service";
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {Name} from "../_models/name.model";
 
 @Component({
   selector: 'app-names',
@@ -11,6 +12,7 @@ export class NamesComponent implements OnInit {
   closeResult = '';
   public newName;
   public names;
+  public editName= new Name();
 
   constructor(
     private namesService: NamesService,
@@ -59,11 +61,16 @@ export class NamesComponent implements OnInit {
   }
 
   newEditName(nameToRemove,nameToReplaceWith):void{
-    this.names=this.namesService.updateName(this.names,nameToRemove,nameToReplaceWith)
+    this.editName=Object.assign({},nameToReplaceWith);
+    this.modalService.open(nameToRemove).result.then((result)=>{
+      this.saveEditedName();
+    })
   }
 
   saveEditedName():void{
-    this.saveName();
+    this.namesService.updateNameId(this.newName).subscribe( saveName => {
+      this.names.push(saveName);
+    })
   }
 
 

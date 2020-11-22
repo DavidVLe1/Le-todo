@@ -9,8 +9,8 @@
     <li> {{ person.name }} <button (click)="deleteName(person)" type='button' class = 'btn btn-danger btn-sm delete'>Delete</button>
       <ng-template #content let-modal>
         <div class="modal-header">
-          <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <h4 class="modal-title" >Profile update</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -19,8 +19,7 @@
             <div class="form-group">
               <label for="editName">Make your changes.</label>
               <div class="input-group">
-                <input id="editName" type="text" name="newName" class="form-control" placeholder="{{person.name}}" [(ngModel)]="newName" (input)="newEditName(person.name, newName)">
-
+                <input id="editName" type="text" name="Edit Name" class="form-control" placeholder="{{person.name}}" [(ngModel)]="editName.name">
               </div>
             </div>
           </form>
@@ -31,7 +30,7 @@
         </div>
       </ng-template>
 
-      <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Edit Name</button>
+      <button class="btn btn-lg btn-outline-primary" (click)="newEditName(content, person)">Edit Name</button>
 
       <hr>
 
