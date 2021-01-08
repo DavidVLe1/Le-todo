@@ -1,6 +1,8 @@
 <nav class="navbar navbar-light bg-dark">
-  <a [routerLink]="'names-navbar'" class="navbar-brand" >Names Navbar</a>
-  <a [routerLink]="'todo-list-component'" class="navbar-brand" >Todo Component</a>
+  <a [routerLink]="'names'" class="navbar-brand text-light" >Names Navbar</a>
+  <a [routerLink]="'todo-list-component'" class="navbar-brand text-light" >Todo Component</a>
 </nav>
 
-<router-outlet></router-outlet>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

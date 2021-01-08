@@ -4,7 +4,7 @@ import {NamesComponent} from "./names/names.component";
 import {TodoListComponentComponent} from "./todo-list-component/todo-list-component.component";
 
 const routes: Routes = [
-  {path: 'names-navbar', component: NamesComponent},
+  {path: 'names', component: NamesComponent},
   {path: 'todo-list-component', component:TodoListComponentComponent}
 ];
 
